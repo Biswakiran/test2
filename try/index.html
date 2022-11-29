@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <Script>
+        const start=document.querySelector('#start')
+        const stop=document.querySelector('#stop')
+
+        const cordnt=[]
+
+        start.addEventListener('click',()=>{
+            navigator.geolocation.watchPosition(
+                data =>{
+                    <!-- console.log(data) -->
+                    cordnt.push(data.coords.longitude,data.coords.latitude)
+                    console.log(cordnt);
+                },(err)=>{
+                    console.log(err),{
+                    enableHighAccuracy:true
+                    }
+                }
+            );
+        });
+    </Script>
+</body>
+</html>
